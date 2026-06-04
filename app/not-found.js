@@ -1,25 +1,92 @@
+"use client";
+import { linkOffer } from '../config'; 
+
 export default function NotFound() {
   return (
-    <div className="container">
-      <div className="flex-container">
-        <div className="main-box" style={{ borderTop: '4px solid #e74c3c' }}>
-          <h1 className="text-danger text-glow" style={{ fontSize: '90px', fontWeight: 'bold', margin: '0' }}>
-            404
-          </h1>
-          <h2 style={{ marginTop: '10px', fontWeight: '600', color: '#ffffff' }}>
-            Waduh, Halaman Ga Ketemu!
-          </h2>
-          <p style={{ color: '#bdc3c7', marginBottom: '35px', fontSize: '15px' }}>
-            Alamat URL yang lo masukin salah atau halaman ini emang udah ga ada.
-          </p>
-          
-          {/* Tombol kembali pakai icon bawaan Bootstrap 3 */}
-          <a href="/" className="btn btn-info btn-lg" style={{ borderRadius: '25px', padding: '10px 35px', fontWeight: '600' }}>
-            <span className="glyphicon glyphicon-home" aria-hidden="true" style={{ marginRight: '8px' }}></span> 
-            Balik ke Beranda
-          </a>
-        </div>
+    <div className="app-container" style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        textAlign: 'center', 
+        padding: '20px',
+        backgroundColor: '#f8fafc' 
+    }}>
+      
+      {/* SVG Icon 404 Illustration */}
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="150" 
+        height="150" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="#4f46e5" /* Warna senada dengan tema tombol Pro kamu */
+        strokeWidth="1" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        style={{ marginBottom: '20px' }}
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        <path d="M15.5 15.5L19 19"></path>
+        <circle cx="10" cy="10" r="3"></circle>
+      </svg>
+
+      {/* Teks 404 dalam Bahasa Inggris */}
+      <h1 className="brand-font" style={{ fontSize: '72px', color: '#1e293b', margin: '0', lineHeight: '1' }}>
+        404
+      </h1>
+      <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#334155', marginTop: '10px', marginBottom: '15px' }}>
+        Page Not Found
+      </h2>
+      <p style={{ color: '#64748b', fontSize: '16px', maxWidth: '400px', marginBottom: '35px', lineHeight: '1.5' }}>
+        Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+      </p>
+
+      {/* Tombol Navigasi dengan SVG */}
+      <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        
+        {/* Tombol Back to Home */}
+        <a href="/" style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '8px', 
+            backgroundColor: '#1e293b', 
+            color: '#ffffff', 
+            padding: '12px 24px', 
+            borderRadius: '30px', 
+            textDecoration: 'none',
+            fontWeight: '600'
+        }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Back to Home
+        </a>
+
+        {/* Tombol ke Link Offer */}
+        <a href={linkOffer} style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '8px', 
+            backgroundColor: '#4f46e5', 
+            color: '#ffffff', 
+            padding: '12px 24px', 
+            borderRadius: '30px', 
+            textDecoration: 'none',
+            fontWeight: '600',
+            boxShadow: '0 4px 15px rgba(79, 70, 229, 0.4)'
+        }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          Upgrade to Pro
+        </a>
       </div>
+
     </div>
   );
 }
