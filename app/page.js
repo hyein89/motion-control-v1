@@ -103,27 +103,37 @@ export default function Home() {
     };
 
     // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (MONETAG REWARDED POPUP)
+    // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (OPTIMASI TELEGRAM MINI APP)
     const handleContinueWithAds = (e) => {
-        e.preventDefault(); // Mencegah link lompat sebelum iklan muncul
+        e.preventDefault(); 
         
-        // Cek apakah script Monetag ter-load dengan aman
+        // 1. CEK APAKAH USER MEMBUKA WEB INI DI DALAM TELEGRAM MINI APP
+        const isTelegram = typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp;
+
+        if (isTelegram) {
+            // Jika di Telegram, kita gunakan fungsi bawaan Telegram untuk membuka Link Offer secara aman 
+            // agar user tidak stuck terkena blokir pop-up iklan webview.
+            if (window.Telegram.WebApp.openLink) {
+                window.Telegram.WebApp.openLink(linkOffer);
+            } else {
+                window.location.href = linkOffer;
+            }
+            return; // Hentikan proses agar tidak memicu error Monetag di dalam Telegram
+        }
+
+        // 2. JIKA DI BROWSER BIASA (CHROME/SAFARI), TETAP JALANKAN IKLAN MONETAG SEPERTI BIASA
         if (typeof window !== 'undefined' && window.show_11100367) {
-            
-            // Panggil iklan model Rewarded Popup ('pop')
             window.show_11100367('pop').then(() => {
-                // Jalur Sukses: User selesai berinteraksi/menutup iklan, langsung lempar ke link affiliate
                 window.location.href = linkOffer;
             }).catch(e => {
-                // Jalur Error: Jika iklan gagal load, user tetap dilempar ke link affiliate biar traffic ga hangus
                 console.error("Ad error:", e);
                 window.location.href = linkOffer; 
             });
-
         } else {
-            // Jalur Cadangan: Jika user pakai Adblocker, otomatis langsung ke link affiliate
             window.location.href = linkOffer;
         }
     };
+
 
     return (
         <>
