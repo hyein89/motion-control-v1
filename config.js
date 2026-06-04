@@ -1,1 +1,1 @@
-export const linkOffer = "https://google.com";
+export const linkOffer = "https://viggle.ai/app/home?via=deni";
