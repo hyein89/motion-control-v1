@@ -71,7 +71,29 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-        
+          {/* ========================================== */}
+        {/* 📊 HISTATS TRACKING SYSTEM (NEXT.JS WAY)   */}
+        {/* ========================================== */}
+        <Script id="histats-counter" strategy="afterInteractive">
+          {`
+            var _Hasync= _Hasync|| [];
+            _Hasync.push(['Histats.start', '1,4828760,4,0,0,0,00010000']);
+            _Hasync.push(['Histats.fasi', '1']);
+            _Hasync.push(['Histats.track_hits', '']);
+            (function() {
+              var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+              hs.src = ('//s10.histats.com/js15_as.js');
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+            })();
+          `}
+        </Script>
+        <noscript>
+          <a href="/" target="_blank">
+            <img src="//sstatic1.histats.com/0.gif?4828760&101" alt="" border="0" style={{ display: 'none' }} />
+          </a>
+        </noscript>
+        {/* ========================================== */}
+    
         {/* Script external wajib ditaruh di sini agar bisa diakses oleh halaman utama */}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
