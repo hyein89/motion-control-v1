@@ -1,5 +1,5 @@
 import './globals.css';
-
+import Histats from './Histats';
 export const metadata = {
   title: 'Motion Control AI - Free Pro Video Generator',
   description: 'Create stunning spatial animations and motion control videos for free. Powered by the Kling 2.6 neural network to animate static character images with cinematic precision.',
@@ -50,19 +50,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ========================================== */}
-        // SCRIPT TELEGRAM MINI APP
-        {/* ========================================== */}
         <script src="https://telegram.org/js/telegram-web-app.js" async></script>
-        
-        {/* ========================================== */}
-        // SCRIPT IKLAN MONETAG
-        {/* ========================================== */}
+       
         <script src="//libtl.com/sdk.js" data-zone="11100367" data-sdk="show_11100367" async></script>
         
-        {/* ========================================== */}
-        // SCRIPT & FONT BAWAAN DESAIN
-        {/* ========================================== */}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,32 +62,10 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-          {/* ========================================== */}
-        {/* 📊 HISTATS TRACKING SYSTEM (NEXT.JS WAY)   */}
-        {/* ========================================== */}
-        <Script id="histats-counter" strategy="afterInteractive">
-          {`
-            var _Hasync= _Hasync|| [];
-            _Hasync.push(['Histats.start', '1,4828760,4,0,0,0,00010000']);
-            _Hasync.push(['Histats.fasi', '1']);
-            _Hasync.push(['Histats.track_hits', '']);
-            (function() {
-              var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-              hs.src = ('//s10.histats.com/js15_as.js');
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-            })();
-          `}
-        </Script>
-        <noscript>
-          <a href="/" target="_blank">
-            <img src="//sstatic1.histats.com/0.gif?4828760&101" alt="" border="0" style={{ display: 'none' }} />
-          </a>
-        </noscript>
-        {/* ========================================== */}
-    
         {/* Script external wajib ditaruh di sini agar bisa diakses oleh halaman utama */}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <Histats />
       </body>
     </html>
   );
