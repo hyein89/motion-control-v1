@@ -102,37 +102,34 @@ export default function Home() {
         }, 700); 
     };
 
-    // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (MONETAG REWARDED POPUP)
-    // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (OPTIMASI TELEGRAM MINI APP)
+    // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (FIXED FOR MONETAG POPUP)
     const handleContinueWithAds = (e) => {
-        e.preventDefault(); 
-        
-        // 1. CEK APAKAH USER MEMBUKA WEB INI DI DALAM TELEGRAM MINI APP
-        const isTelegram = typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp;
+        e.preventDefault(); // Mencegah link lompat mentah-mentah
 
-        if (isTelegram) {
-            // Jika di Telegram, kita gunakan fungsi bawaan Telegram untuk membuka Link Offer secara aman 
-            // agar user tidak stuck terkena blokir pop-up iklan webview.
-            if (window.Telegram.WebApp.openLink) {
-                window.Telegram.WebApp.openLink(linkOffer);
-            } else {
-                window.location.href = linkOffer;
-            }
-            return; // Hentikan proses agar tidak memicu error Monetag di dalam Telegram
-        }
-
-        // 2. JIKA DI BROWSER BIASA (CHROME/SAFARI), TETAP JALANKAN IKLAN MONETAG SEPERTI BIASA
+        // Pastikan window dan fungsi Monetag sudah tersedia di browser/Telegram
         if (typeof window !== 'undefined' && window.show_11100367) {
-            window.show_11100367('pop').then(() => {
-                window.location.href = linkOffer;
-            }).catch(e => {
-                console.error("Ad error:", e);
-                window.location.href = linkOffer; 
-            });
+            
+            // Panggil iklan model POPUP sesuai dokumentasi resmi Monetag TMA
+            window.show_11100367({ type: 'pop' })
+                .then(() => {
+                    // JALUR SUKSES: Setelah popup iklan berhasil dibuka, 
+                    // otomatis arahkan halaman utama ke link offer affiliate lo
+                    window.location.href = linkOffer;
+                })
+                .catch((err) => {
+                    // JALUR CADANGAN: Jika ada masalah jaringan/loading iklan gagal,
+                    // user tetep dilempar ke link offer biar lo ga rugi traffic
+                    console.log('Ad popup failed:', err.message);
+                    window.location.href = linkOffer;
+                });
+
         } else {
+            // JALUR ANTISIPASI: Jika script Monetag belum kelar ke-load / kena adblock,
+            // langsung oper ke link offer
             window.location.href = linkOffer;
         }
     };
+
 
 
     return (
