@@ -1,8 +1,5 @@
 import './globals.css';
 
-// ==========================================
-// 🚀 KONFIGURASI SEO TINGKAT DEWA (BAHASA INGGRIS)
-// ==========================================
 export const metadata = {
   title: 'Motion Control AI - Free Pro Video Generator',
   description: 'Create stunning spatial animations and motion control videos for free. Powered by the Kling 2.6 neural network to animate static character images with cinematic precision.',
