@@ -114,7 +114,7 @@ export default function Home() {
                     </div>
                     <div className="right-menu">
                         <a href={linkOffer} className="btn-subscribe">
-                            <i className="fa fa-star"></i> (3) Pro
+                            <i className="fa fa-star"></i>3 Pro
                         </a>
                         <div className="profile-icon"><i className="fa fa-user"></i></div>
                     </div>
