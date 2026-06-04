@@ -1,45 +1,242 @@
-/* Style Dasar Global */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #111116; /* Background gelap modern */
-  color: #ffffff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
+/* Base Styling & Reset */
+        body {
+            background-color: #e5e7eb; /* Abu-abu agak gelap untuk desktop */
+            color: #333;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* Mengatur konten agar otomatis ke tengah layar (Vertikal & Horizontal) */
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-}
+        .brand-font, .btn-brand, .section-title, .modal-title {
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 0.5px;
+            font-weight: normal;
+        }
 
-/* Box wadah utama */
-.main-box {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 40px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
+        /* Container Utama - Lebar optimal untuk Desktop & HP */
+        .app-container {
+            max-width: 750px; 
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
 
-.brand-title {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: #3498db;
-  margin-bottom: 20px;
-}
+        /* Top Navbar (Sticky) */
+        .top-navbar {
+            background-color: #111827;
+            color: white;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .top-navbar .logo { font-size: 17px; display: flex; align-items: center; white-space: nowrap; }
+        .top-navbar .logo i { color: #8b5cf6; font-size: 24px; margin-right: 8px; }
+        .top-navbar .logo .text-light { color: #9ca3af; }
+        
+        .right-menu { display: flex; align-items: center; gap: 10px; }
+        .btn-subscribe {
+            background: linear-gradient(135deg, #2d2b42 0%, #1f1e2e 100%);
+            color: #e5e7eb; border: 1px solid #4b5563;
+            border-radius: 20px; padding: 5px 12px; font-size: 11px; text-decoration: none; 
+            font-weight: bold; white-space: nowrap; transition: all 0.2s;
+        }
+        .btn-subscribe:hover { color: white; text-decoration: none; border-color: #8b5cf6; }
+        .btn-subscribe i { color: #fbbf24; margin-right: 4px;}
+        .profile-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; width: 30px; height: 30px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 13px; flex-shrink: 0; border: 2px solid #60a5fa;
+        }
 
-.text-glow {
-  text-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
-}
+        /* Content Area */
+        .content-area { padding: 25px 20px; flex-grow: 1;}
+
+        .custom-tabs { border-bottom: 2px solid #f3f4f6; margin-bottom: 20px; padding-bottom: 8px; }
+        .custom-tabs .active-tab { color: #7c3aed; font-size: 16px; border-bottom: 3px solid #7c3aed; padding-bottom: 9px; }
+        
+        .fake-select {
+            background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px;
+            padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 25px; font-weight: 600; font-size: 14px;
+        }
+        .fake-select .dot { color: #3b82f6; font-size: 18px; margin-right: 6px; vertical-align: middle; }
+        .section-title { font-size: 15px; margin-bottom: 10px; color: #1f2937; }
+
+        /* Real Upload Box */
+        .upload-box {
+            border: 2px dashed #d1d5db; background-color: #fcfcfc; border-radius: 12px;
+            text-align: center; padding: 25px 15px; margin-bottom: 6px; cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .upload-box:hover { border-color: #8b5cf6; background-color: #f5f3ff; }
+        .upload-box .icon {
+            font-size: 26px; color: #6b7280; margin-bottom: 12px; display: inline-block;
+            border: 1px solid #e5e7eb; border-radius: 50%; padding: 12px; background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .upload-box p { color: #4b5563; font-size: 13px; margin-bottom: 2px; font-weight: 600; }
+        .upload-box .file-name {
+            display: block; font-size: 12px; color: #10b981; margin-top: 8px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+        }
+        .helper-text { font-size: 11px; color: #9ca3af; margin-bottom: 25px; line-height: 1.5; }
+
+        /* Tombol Generate */
+        .btn-generate {
+            background: linear-gradient(135deg, #9333ea 0%, #6d28d9 100%);
+            color: white; border: none; border-radius: 12px; padding: 16px;
+            font-size: 18px; width: 100%; display: flex; justify-content: center; align-items: center;
+            margin-top: 10px; box-shadow: 0 6px 15px rgba(109, 40, 217, 0.3); transition: transform 0.1s;
+        }
+        .btn-generate:active { transform: scale(0.97); }
+        .btn-generate .credits { font-size: 13px; margin-left: 8px; font-family: sans-serif; opacity: 0.9;}
+
+        /* Card Bawah */
+        .bottom-card {
+            background: #ffffff; border: 1px solid #f3f4f6; border-radius: 12px;
+            padding: 18px; margin-top: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        .bottom-card-header { display: flex; justify-content: space-between; align-items: center; }
+        .bottom-card-info { display: flex; align-items: center; }
+        .bottom-card-info .fa-play-circle, .bottom-card-info .fa-spinner {
+            color: #8b5cf6; font-size: 30px; margin-right: 15px;
+        }
+        .bottom-card-info .title { font-size: 15px; font-weight: bold; color: #111827; }
+        .bottom-card-info .subtitle { font-size: 12px; color: #6b7280; }
+        
+        .btn-support {
+            border: 1px solid #e5e7eb; background: white; border-radius: 20px;
+            padding: 6px 14px; font-size: 11px; color: #374151; font-weight: bold;
+            transition: all 0.2s;
+        }
+        .btn-support:hover { border-color: #8b5cf6; color: #8b5cf6; }
+
+        /* Progress Bar */
+        .progress-container { display: none; margin-top: 20px; padding-top: 18px; border-top: 1px dashed #e5e7eb; }
+        .progress { height: 14px; border-radius: 10px; background-color: #f3f4f6; margin-bottom: 10px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+        .progress-bar { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); transition: width 0.4s ease; }
+        .progress-details { display: flex; justify-content: space-between; font-size: 12px; color: #6b7280; font-weight: 600; }
+        .progress-percent { color: #7c3aed; font-weight: bold; font-size: 15px; }
+
+        /* --- ARTIKEL SUPER RAPIH (TANPA BOX/BORDER, TANPA ANGKA) --- */
+        .article-section {
+            margin-top: 20px;
+            padding: 10px 5px;
+            background-color: transparent; /* Menyatu dengan background */
+            border: none; /* Border dihapus */
+            margin-bottom: 20px;
+        }
+        .article-badge {
+            display: inline-block; background-color: #f3e8ff; color: #6b21a8;
+            font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 6px;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .article-title { font-size: 16px; color: #111827; margin-top: 20px; margin-bottom: 12px; text-transform: uppercase; }
+        .article-text { font-size: 13px; color: #4b5563; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
+        
+        .article-steps { margin-bottom: 20px; }
+        .article-step-item { margin-bottom: 15px; }
+        .article-step-item strong { 
+            display: block; 
+            font-size: 14px; 
+            color: #111827; 
+            margin-bottom: 4px;
+        }
+        .article-step-item p { 
+            font-size: 13px; 
+            color: #4b5563; 
+            line-height: 1.6; 
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* --- PENGISI AREA KOSONG DESKTOP (FOOTER APP) --- */
+        .footer-app {
+            text-align: center;
+            padding: 30px 20px 100px 20px; /* 100px bawah agar tidak tertutup nav */
+            color: #9ca3af;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* Bottom Nav (Fixed) */
+        .bottom-nav {
+            position: fixed; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 100%; 
+            max-width: 750px; 
+            background-color: white; 
+            border-top: 1px solid #e5e7eb;
+            display: flex; justify-content: space-around; padding: 12px 0; z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
+        }
+        .bottom-nav a { text-align: center; color: #9ca3af; font-size: 11px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
+        .bottom-nav a i { font-size: 20px; display: block; margin-bottom: 5px; color: #6b7280;}
+        .bottom-nav a.active { color: #7c3aed; }
+        .bottom-nav a.active i { color: #7c3aed; }
+
+        /* Modal Premium Design & Custom SVGs */
+        .custom-toast {
+            position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+            background-color: #ef4444; color: white; padding: 12px 20px; border-radius: 8px;
+            font-size: 13px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 2000; display: none; width: 85%; max-width: 350px; text-align: center;
+        }
+        
+        .modal-content { 
+            border-radius: 20px; 
+            border: none; 
+            overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
+        }
+        .modal-header { 
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); 
+            color: white; 
+            border-bottom: none; 
+            text-align: center; 
+            padding: 25px; 
+        }
+        .modal-title { font-size: 24px; color: #a78bfa; margin: 0; }
+        .modal-body { text-align: center; padding: 35px 25px; background: #ffffff;}
+        .modal-body p { font-size: 14px; color: #4b5563; margin-bottom: 30px; line-height: 1.6; }
+        
+        .btn-offer {
+            display: flex; justify-content: center; align-items: center; width: 100%; margin-bottom: 15px; padding: 15px;
+            border-radius: 12px; font-size: 15px; text-decoration: none !important; transition: all 0.2s;
+        }
+        .btn-offer:active { transform: scale(0.97); }
+        
+        .btn-offer-primary { 
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); 
+            color: #78350f; /* Teks coklat tua agar kontras dengan emas */
+            border: none; 
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+        .btn-offer-primary:hover { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #451a03; }
+        
+        .btn-offer-secondary { 
+            background: #f9fafb; 
+            color: #374151; 
+            border: 1px solid #d1d5db; 
+            font-weight: 600; 
+        }
+        .btn-offer-secondary:hover { border-color: #6b7280; background: #f3f4f6;}
+
+        /* Spinner Loading */
+        .spinner { animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
