@@ -102,6 +102,29 @@ export default function Home() {
         }, 700); 
     };
 
+    // FUNGSI KHUSUS TOMBOL CONTINUE WITH ADS (MONETAG REWARDED POPUP)
+    const handleContinueWithAds = (e) => {
+        e.preventDefault(); // Mencegah link lompat sebelum iklan muncul
+        
+        // Cek apakah script Monetag ter-load dengan aman
+        if (typeof window !== 'undefined' && window.show_11100367) {
+            
+            // Panggil iklan model Rewarded Popup ('pop')
+            window.show_11100367('pop').then(() => {
+                // Jalur Sukses: User selesai berinteraksi/menutup iklan, langsung lempar ke link affiliate
+                window.location.href = linkOffer;
+            }).catch(e => {
+                // Jalur Error: Jika iklan gagal load, user tetap dilempar ke link affiliate biar traffic ga hangus
+                console.error("Ad error:", e);
+                window.location.href = linkOffer; 
+            });
+
+        } else {
+            // Jalur Cadangan: Jika user pakai Adblocker, otomatis langsung ke link affiliate
+            window.location.href = linkOffer;
+        }
+    };
+
     return (
         <>
             <div className="app-container">
@@ -114,7 +137,7 @@ export default function Home() {
                     </div>
                     <div className="right-menu">
                         <a href={linkOffer} className="btn-subscribe">
-                            <i className="fa fa-star"></i>3 Pro
+                            <i className="fa fa-star"></i> Pro
                         </a>
                         <div className="profile-icon"><i className="fa fa-user"></i></div>
                     </div>
@@ -224,7 +247,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Modal Bootstrap 3 */}
+            {/* Modal Box */}
             <div className="modal fade" id="offerModal" tabIndex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
                 <div className="modal-dialog modal-dialog-centered" role="document" style={{ marginTop: '25vh' }}>
                     <div className="modal-content">
@@ -234,6 +257,7 @@ export default function Home() {
                         <div className="modal-body">
                             <p><strong>Out of Credits!</strong><br />To finish rendering your high-quality AI video, please choose an option below.</p>
                             
+                            {/* Tombol Premium: Langsung mengarah ke link affiliate */}
                             <a href={linkOffer} className="btn-offer btn-offer-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#78350f" stroke="#78350f" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
                                     <polygon points="2 4 5 16 19 16 22 4 16 11 12 4 8 11 2 4"></polygon>
@@ -242,7 +266,8 @@ export default function Home() {
                                 Subscribe to Premium
                             </a>
                             
-                            <a href={linkOffer} className="btn-offer btn-offer-secondary">
+                            {/* Tombol Continue with Ads: Memicu iklan Monetag terlebih dahulu */}
+                            <a href="#" onClick={handleContinueWithAds} className="btn-offer btn-offer-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
                                     <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
                                     <polygon points="10 9 15 12 10 15 10 9"></polygon>
