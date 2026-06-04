@@ -240,3 +240,11 @@
         /* Spinner Loading */
         .spinner { animation: spin 1s linear infinite; display: inline-block; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+/* Menghilangkan garis bawah dan kotak saat link diklik atau disorot */
+a, a:hover, a:focus, a:active {
+  text-decoration: none !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent; /* Khusus untuk menghilangkan efek blok warna saat diklik di HP */
+}
+
+
